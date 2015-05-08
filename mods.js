@@ -9,6 +9,8 @@ nodeDiv.style.zIndex = 9999999999;
 nodeDiv.style.color = "#dddddd";
 nodeDiv.innerHTML = "<small>electronoob</small>";
 nodeDiv.innerHTML+= "<p>hacked interface for team play</p>";
+nodeDiv.innerHTML+= "<p>There is a new Mumble server for Agar fans here: <a href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat information here.</a>";
+
 jQuery('#region').parent().get(0).appendChild( document.createElement("br"));
 jQuery('#region').parent().get(0).appendChild(nodeDiv);
 
