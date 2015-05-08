@@ -3,13 +3,13 @@
 
 var modBlocking = true;
 var nodeDiv = document.createElement("div");
+
 nodeDiv.id = "includedContent";
 nodeDiv.style.backgroundColor = "#000000";
 nodeDiv.style.zIndex = 9999999999;
 nodeDiv.style.color = "#dddddd";
-nodeDiv.innerHTML = "<small>electronoob's evergreen server script.</small>";
-nodeDiv.innerHTML+= "<p>Hacked interface for team play. <a href=\"http://www.agarmods.com/Docs/\">Instructions</a></p>";
-nodeDiv.innerHTML+= "<p>There is a new <a href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat here.</a>";
+nodeDiv.innerHTML = "<small>electronoob's evergreen server script for team play. <a target=\"_blank\" href=\"http://www.agarmods.com/Docs/\">Instructions</a></p>";
+nodeDiv.innerHTML+= "<p>There is a new <a target=\"_blank\" href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat here.</a>";
 
 jQuery('#region').parent().get(0).appendChild( document.createElement("br"));
 jQuery('#region').parent().get(0).appendChild(nodeDiv);
@@ -18,8 +18,11 @@ var selector = jQuery('#region');
 var playBtn = jQuery('#playBtn');
 var nodeInput = document.createElement("input");
 var nodeBr = document.createElement("br");
+
 nodeInput.className = "form-control";
 nodeInput.id = "iphack";
+nodeInput.placeholder = "Alternative server ip:port here.";
+
 jQuery( playBtn ).parent().get( 0 ).appendChild(nodeBr);
 jQuery( playBtn ).parent().get( 0 ).appendChild(nodeInput);
 
