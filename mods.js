@@ -46,8 +46,8 @@ jQuery('#playBtn').off();
 $('.btn-needs-server').prop('disabled', false);
 jQuery('#playBtn').click(function() {
 	if (modBlocking == false ) {
-		jQuery('#region').val("SG-Singapore");
-		jQuery('#region').change();
+//		jQuery('#region').val("SG-Singapore");
+//		jQuery('#region').change();
 	}
     setNick(document.getElementById('nick').value);
     return false;
