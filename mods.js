@@ -39,7 +39,7 @@ nodeDiv.innerHTML += "\
   <li>1: Get ip address from friend.</li>\
   <li>2: Put it in text box below.</li>\
   <li>3: Press the swirly icon next to it.</li>\
-  <h3>Note: If your version is on 1.3 or lower you MUST update to 1.4 for everything to work correctly.</h3>\
+  <h3>Note: Check with your friend to see whos #1 on the leaderboard</h3>\
 </ul>\
 \
 ";
