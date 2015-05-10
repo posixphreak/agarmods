@@ -11,15 +11,6 @@ cachedhd = hd.innerHTML;
 hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>!AgarioMods.com Evergreen Scripts</center>");
 });
 
-
-$( document ).ready(function() {
-nk = document.getElementById("nick");
-cachednk = nk.innerHTML;
-class = "form-control"
-placeholder = "Hi"
-});
-
-
 nodeDiv.id = "includedContent";
 nodeDiv.style.width = "320px"
 nodeDiv.style.backgroundColor = "#000000";
