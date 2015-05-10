@@ -15,7 +15,8 @@ hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>!AgarioMods.c
 $( document ).ready(function() {
 nk = document.getElementById("nick");
 cachednk = nk.innerHTML;
-placeholder = "Hi"
+class ="form-control";
+placeholder = "Hi";
 });
 
 
