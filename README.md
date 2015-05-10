@@ -13,6 +13,7 @@ Navigation: [Website][4] | **Script Repository** | [Agar Game][5]
 [8]: https://github.com/shipguy55
 [9]: https://github.com/electronoob
 [10]: https://github.com/IntelHD400
+[11]: https://github.com/HYDROagar
 
 
 Introduction
@@ -44,6 +45,6 @@ Credits
  - [Irraquated][7]
  - [Shipguy55][8]
  - [IntelHD400][10]
-
+ - [HYDRO][11]
 
 
