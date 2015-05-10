@@ -11,7 +11,7 @@ cachedhd = hd.innerHTML;
 hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.com Evergreen Scripts</center>");
 });
 
-document.getElementById("nick").placeholder = "Name";
+document.getElementById("nick").placeholder = "<center>Name</center>";
 
 $( document ).ready(function() {
 nh = document.getElementById("overlays");
@@ -28,9 +28,9 @@ nodeDiv.style.padding = "10px";
 nodeDiv.style.left = "-225px";
 nodeDiv.style.borderRadius = "10px";
 nodeDiv.style.color = "#dddddd";
-nodeDiv.innerHTML = "<small>Agariomods' evergreen server script for team play. Version 1.3 <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
-nodeDiv.innerHTML += "<p><small>There is a new <a target=\"_blank\" href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat here.</a></small>";
-nodeDiv.innerHTML += "<u>connections steps</u>";
+nodeDiv.innerHTML = "<center><small>Agariomods' evergreen server script for team play. Version 1.3 <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p></center>";
+nodeDiv.innerHTML += "<center><p><small>There is a new <a target=\"_blank\" href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat here.</a></small></center>";
+nodeDiv.innerHTML += "<center><u>connections steps</u></center>";
 nodeDiv.innerHTML += "\
 <ul>\
   <li>1: Get ip address from friend.</li>\
