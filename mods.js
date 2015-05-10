@@ -23,7 +23,7 @@ nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "Typ
 <!----------------------------------------------------------------------------------------------------------------------->
 
 nodeDiv.id = "includedContent";
-nodeDiv.style.width = "320px"
+nodeDiv.style.width = "300px"
 nodeDiv.style.backgroundColor = "#000000";
 nodeDiv.style.zIndex = 9999999999;
 nodeDiv.style.position = "center";
