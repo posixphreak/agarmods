@@ -11,13 +11,13 @@ cachedhd = hd.innerHTML;
 hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>!AgarioMods.com Evergreen Scripts</center>");
 });
 
-<!-- INTEL's CODE -->
 
 $( document ).ready(function() {
-NN = document.getElementById("nick");
-cachedNN = NN.innerHTML;
-NN.innerHTML = cachedNN.replace("<center>Nick</center>", "<center>Nick Name</center>");
+nk = document.getElementById("nick");
+cachednk = nk.innerHTML;
+placeholder = "Hi"
 });
+
 
 nodeDiv.id = "includedContent";
 nodeDiv.style.width = "320px"
