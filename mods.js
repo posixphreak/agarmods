@@ -31,9 +31,9 @@ nodeDiv.style.padding = "5px";
 nodeDiv.style.left = "-200px";
 nodeDiv.style.borderRadius = "5px";
 nodeDiv.style.color = "#dddddd";
-nodeDiv.innerHTML = "<small>Version 1.4 <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
+nodeDiv.innerHTML = "<small><b>Version 1.4.1</b> <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
 nodeDiv.innerHTML += "<p><small>There is a new <a target=\"_blank\" href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat here.</a></small>";
-nodeDiv.innerHTML += "<u>connections steps</u>";
+nodeDiv.innerHTML += "<b>connections steps</b>";
 nodeDiv.innerHTML += "\
 <ul>\
   <li>1: Get ip address from friend.</li>\
