@@ -3,6 +3,8 @@
 var modBlocking = true;
 var nodeDiv = document.createElement("div");
 
+<!-- HYDRA's CODE -->
+
 $( document ).ready(function() {
 hd = document.getElementById("helloDialog");
 cachedhd = hd.innerHTML;
@@ -18,7 +20,7 @@ nodeDiv.style.padding = "10px";
 nodeDiv.style.left = "-225px";
 nodeDiv.style.borderRadius = "10px";
 nodeDiv.style.color = "#dddddd";
-nodeDiv.innerHTML = "<small>Agariomods' evergreen server script for team play. Version 1.2 <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
+nodeDiv.innerHTML = "<small>Agariomods' evergreen server script for team play. Version 1.3 <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
 nodeDiv.innerHTML += "<p><small>There is a new <a target=\"_blank\" href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat here.</a></small>";
 nodeDiv.innerHTML += "<u>connections steps</u>";
 nodeDiv.innerHTML += "\
