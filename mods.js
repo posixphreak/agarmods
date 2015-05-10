@@ -8,8 +8,11 @@ var nodeDiv = document.createElement("div");
 $( document ).ready(function() {
 hd = document.getElementById("helloDialog");
 cachedhd = hd.innerHTML;
-hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>!AgarioMods.com Evergreen Scripts</center>");
+hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.com Evergreen Scripts</center>");
 });
+
+document.getElementById("nick").placeholder = "Anthony";
+
 
 nodeDiv.id = "includedContent";
 nodeDiv.style.width = "320px"
