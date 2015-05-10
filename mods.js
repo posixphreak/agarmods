@@ -11,6 +11,14 @@ cachedhd = hd.innerHTML;
 hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.com Evergreen Scripts</center>");
 });
 
+<!-- INTEL's CODE -->
+
+$( document ).ready(function() {
+NN = document.getElementById("nick");
+cachedNN = NN.innerHTML;
+NN.innerHTML = cachedNN.replace("<center>Nick</center>", "<center>Nick Name</center>");
+});
+
 nodeDiv.id = "includedContent";
 nodeDiv.style.width = "320px"
 nodeDiv.style.backgroundColor = "#000000";
