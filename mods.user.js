@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Agar Server Selector
 // @namespace	 electronoob-agarmods
-// @version      1.3
+// @version      1.4
 // @description  based on Ununoctium118 earlier hack
 // @author       electronoob
 // @match        http://agar.io
