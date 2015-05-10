@@ -4,17 +4,16 @@ var modBlocking = true;
 var nodeDiv = document.createElement("div");
 
 nodeDiv.id = "includedContent";
-nodeDiv.style.width = "800px"
+nodeDiv.style.width = "320px"
 nodeDiv.style.backgroundColor = "#000000";
 nodeDiv.style.zIndex = 9999999999;
-nodeDiv.style.position = "relative";
+nodeDiv.style.position = "center";
 nodeDiv.style.padding = "10px";
 nodeDiv.style.left = "-225px";
 nodeDiv.style.borderRadius = "10px";
-nodeDiv.style.boxShadow = "10px 10px 50px #ffffff";
 nodeDiv.style.color = "#dddddd";
 nodeDiv.innerHTML = "<small>electronoob's evergreen server script for team play. <a target=\"_blank\" href=\"http://www.agarmods.com/\">Website</a>.</p>";
-nodeDiv.innerHTML += "<p>There is a new <a target=\"_blank\" href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat here.</a>";
+nodeDiv.innerHTML += "<p><small>There is a new <a target=\"_blank\" href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat here.</a></small>";
 nodeDiv.innerHTML += "<u>connections steps</u>";
 nodeDiv.innerHTML += "\
 <ul>\
