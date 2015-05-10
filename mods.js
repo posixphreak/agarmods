@@ -4,12 +4,56 @@ var modBlocking = true;
 var nodeDiv = document.createElement("div");
 
 <!-- HYDRO's CODE -->
-
+ 
 $( document ).ready(function() {
 hd = document.getElementById("helloDialog");
 cachedhd = hd.innerHTML;
 hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.com Evergreen Scripts</center>");
 });
+ 
+var showBorders = true;
+var skin = skinsEnabled ? getSkin(this.name) : null;
+      ctx.stroke();
+      ctx.fill();
+      if (skin != null && skin.width > 0) {
+        ctx.save();
+        ctx.clip();
+        if (imageTransparency) {
+          ctx.globalAlpha = 0.7;
+        }
+        ctx.drawImage(skin, this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+        ctx.restore();
+      }
+function drawMapBorders() {
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(11180, 0);
+    ctx.lineTo(11180, 11180);
+    ctx.lineTo(0, 11180);
+    ctx.lineTo(0, 0);
+    ctx.stroke();
+       
+}
+ 
+draw: function () {
+      if (sizeColors) {
+        var mySize = Math.min.apply(null, myCells.map(function (x) { return x.getMass(); })); // Size of the smallest piece of us
+        if (this.isVirus) {//} || myCells.length === 0) {
+          this.color = "#666666"; // Viruses are always gray, and everything is gray when dead
+        } else if (~myCells.indexOf(this)) {
+          this.color = "#0000FF"; // Cells we own are blue
+        } else if (this.getMass() > mySize * 2.5) {
+          this.color = "#FF0000"; // Cells that can split on us are red
+        } else if (this.getMass() > mySize * 1.25) {
+          this.color = "#FF6600"; // Cells that can eat us are orange
+        } else if (this.getMass() > mySize * 0.75) {
+          this.color = "#FFFF00"; // Cells that we can't, and they can't eat us are yellow
+        } else if (this.getMass() > mySize * 0.4) {
+          this.color = "#007700"; // Cells that we can eat are dark green
+        } else {
+          this.color = "#00FF00"; // Cells that we can split on are ligth green
+        }
+      }
 
 <!-- INTEL's CODE -->
 
