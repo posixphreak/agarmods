@@ -9,6 +9,8 @@ Navigation: [Website][4] | **Script Repository** | [Agar Game][5]
 [4]: http://agarmods.com/
 [5]: http://agar.io
 [6]: https://github.com/electronoob/agarmods/blob/master/LICENSE
+[7]: https://github.com/Irraquated
+[8]: https://github.com/shipguy55
 
 
 Introduction
@@ -37,8 +39,8 @@ Credits
  - Electronoob
 
 **Contributors**
- - Irraquated
- - Shipguy55
+ - [Irraquated][6]
+ - [Shipguy55][7]
 
 
 
