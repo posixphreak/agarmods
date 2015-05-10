@@ -13,12 +13,18 @@ hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.co
 
 <!-- INTEL's CODE -->
 
+<div style="border:3px solid #00000">
+Div here</div>
+
+
 document.getElementById("nick").placeholder = "Name";
 $( document ).ready(function() {
 nh = document.getElementById("overlays");
 cachednh = nh.innerHTML;
 nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "Type A Username");
 });
+
+<!----------------------------------------------------------------------------------------------------------------------->
 
 nodeDiv.id = "includedContent";
 nodeDiv.style.width = "320px"
