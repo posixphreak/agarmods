@@ -108,4 +108,3 @@ jQuery('#region').change(function() {
     };
 })(window);
 
-//this is a test that intelhd400 added
