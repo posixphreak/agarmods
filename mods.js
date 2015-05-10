@@ -27,9 +27,9 @@ nodeDiv.style.width = "300px"
 nodeDiv.style.backgroundColor = "#000000";
 nodeDiv.style.zIndex = 9999999999;
 nodeDiv.style.position = "center";
-nodeDiv.style.padding = "10px";
-nodeDiv.style.left = "-225px";
-nodeDiv.style.borderRadius = "10px";
+nodeDiv.style.padding = "5px";
+nodeDiv.style.left = "-200px";
+nodeDiv.style.borderRadius = "5px";
 nodeDiv.style.color = "#dddddd";
 nodeDiv.innerHTML = "<small>Version 1.4 <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
 nodeDiv.innerHTML += "<p><small>There is a new <a target=\"_blank\" href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat here.</a></small>";
