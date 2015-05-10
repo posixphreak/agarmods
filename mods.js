@@ -3,6 +3,12 @@
 var modBlocking = true;
 var nodeDiv = document.createElement("div");
 
+$( document ).ready(function() {
+hd = document.getElementById("helloDialog");
+cachedhd = hd.innerHTML;
+hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.com Evergreen Scripts</center>");
+});
+
 nodeDiv.id = "includedContent";
 nodeDiv.style.width = "320px"
 nodeDiv.style.backgroundColor = "#000000";
