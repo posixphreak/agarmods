@@ -15,7 +15,7 @@ hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.co
 
 <div
 style="border:3px solid #00000">
-document.getElementById("overlays")
+document.getElementById("overlays");
 </div>
 
 
