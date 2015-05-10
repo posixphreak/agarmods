@@ -3,7 +3,7 @@
 var modBlocking = true;
 var nodeDiv = document.createElement("div");
 
-<!-- HYDRA's CODE -->
+<!-- HYDRO's CODE -->
 
 $( document ).ready(function() {
 hd = document.getElementById("helloDialog");
