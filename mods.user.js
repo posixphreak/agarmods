@@ -12,10 +12,6 @@ var script = document.createElement('script');
 script.src = "http://botb.club/~e/agar.io/mods.js";
 (document.body || document.head || document.documentElement).appendChild(script);
 
-var script = document.createElement('script');
-script.src = "";
-(document.body || document.head || document.documentElement).appendChild(script);
-
 /*
 repo:
 https://github.com/electronoob/agarmods
