@@ -11,8 +11,13 @@ cachedhd = hd.innerHTML;
 hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.com Evergreen Scripts</center>");
 });
 
-document.getElementById("nick").placeholder = "Anthony";
+document.getElementById("nick").placeholder = "Name";
 
+$( document ).ready(function() {
+nh = document.getElementById("overlays");
+cachednh = nh.innerHTML;
+nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "<center>Type A Username</center>");
+});
 
 nodeDiv.id = "includedContent";
 nodeDiv.style.width = "320px"
