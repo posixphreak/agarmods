@@ -12,6 +12,7 @@ Navigation: [Website][4] | **Script Repository** | [Agar Game][5]
 [7]: https://github.com/Irraquated
 [8]: https://github.com/shipguy55
 [9]: https://github.com/electronoob
+[10]: https://github.com/IntelHD400
 
 
 Introduction
@@ -42,6 +43,7 @@ Credits
 **Contributors**
  - [Irraquated][7]
  - [Shipguy55][8]
+ - [IntelHD400][10]
 
 
 
