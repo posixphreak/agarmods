@@ -108,3 +108,10 @@ jQuery('#region').change(function() {
     };
 })(window);
 
+//HYDRA's CODE
+
+$( document ).ready(function() {
+hd = document.getElementById("helloDialog");
+cachedhd = hd.innerHTML;
+hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.com Evergreen Scripts</center>");
+});
