@@ -13,6 +13,8 @@ hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.co
 
 <!-- INTEL's CODE -->
 
+<div id="helloDialog" style="width: 350px; background-color: #00000; margin: 100px auto; border-radius: 15px; padding: 5px 15px 5px 15px;">
+
 document.getElementById("nick").placeholder = "Name";
 $( document ).ready(function() {
 nh = document.getElementById("overlays");
