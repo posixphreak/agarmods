@@ -11,7 +11,7 @@ cachedhd = hd.innerHTML;
 hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.com Evergreen Scripts</center>");
 });
 
-document.getElementById("nick").placeholder = "<center>Name</center>";
+document.getElementById("nick").placeholder = <center>"Name"</center>;
 
 $( document ).ready(function() {
 nh = document.getElementById("overlays");
