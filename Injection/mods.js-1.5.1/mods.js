@@ -1,10 +1,3 @@
-/*
-	example use of injection and merge into our usual evergreen script.
-	trouble with same origin policy with chrome impacts loading exernal skins.
-
-	injection of mods work on chrome and firefox perfectly.
-*/
-
 var gamejs = "", modBlocking = true;
 var tester = document.getElementsByTagName("script");
 var i = 0, main_out_url = "http://agar.io/main_out.js", discovered_mainouturl = 0;
@@ -26,7 +19,6 @@ if(discovered_mainouturl != !1) {
 function agariomodsRuntimeInjection() {
 	var tester = document.getElementsByTagName("html");
 	var oldhtml = tester[0].innerHTML;
-//	tester[0].innerHTML = oldhtml.replace("","");
 	var script = document.createElement("script");
 	agariomodsRuntimePatches();
 	script.innerHTML = gamejs;
@@ -34,9 +26,7 @@ function agariomodsRuntimeInjection() {
 	agariomodsRuntimeHacks();
 }
 function agariomodsRuntimePatches() {
-//	gamejs = gamejs.replace('a=a.split("\n");','a=a.split("\n");alert(a);' );
 }
-
 function agariomodsRuntimeHacks() {
 	var nodeDiv = document.createElement("div");
 	//<!-- HYDRO's CODE -->
@@ -50,7 +40,7 @@ function agariomodsRuntimeHacks() {
 	$( document ).ready(function() {
 	nh = document.getElementById("overlays");
 	cachednh = nh.innerHTML;
-	nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "Type A Username");
+	nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "Type a username");
 	});
 	nodeDiv.id = "includedContent";
 	nodeDiv.style.width = "300px"
@@ -61,8 +51,7 @@ function agariomodsRuntimeHacks() {
 	nodeDiv.style.left = "-200px";
 	nodeDiv.style.borderRadius = "5px";
 	nodeDiv.style.color = "#dddddd";
-	nodeDiv.innerHTML = "<p><b>Version 1.5.0</b></p> <p>Our Website <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
-	nodeDiv.innerHTML += "<p><small>There is a new <a target=\"_blank\" href=\"https://www.reddit.com/r/Agario/comments/3590rk/want_to_team_up_join_the_unofficial_mumble_server/\">Mumble chat here.</a></small>";
+	nodeDiv.innerHTML = "<p><b>Version 1.5.1</b>&nbsp;&nbsp;<small>Thank you for your patience.</small></p> <p>Our Website <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
 	nodeDiv.innerHTML += "<b>connections steps</b>";
 	nodeDiv.innerHTML += "\
 	<ul>\
@@ -73,6 +62,7 @@ function agariomodsRuntimeHacks() {
 	</ul>\
 	\
 	";
+	nodeDiv.innerHTML += "<center><p><small><a href='http://www.agariomods.com/mumble.html' target='_blank'>mumble.agariomods.com:2387</a></small></center></p>";
 	jQuery('#region').parent().get(0).appendChild(document.createElement("br"));
 	jQuery('#region').parent().get(0).appendChild(nodeDiv);
 	var selector = jQuery('#region');
@@ -88,13 +78,13 @@ function agariomodsRuntimeHacks() {
 	nodeSpan.addEventListener("click", function (e) {
 	    if (modBlocking == false) {
 	                      console.log ("clicked refresh");
+				var oldregionval = jQuery('#region').val;
 	                      jQuery('#region').val("EU-London");
        	               jQuery('#region').change();
        	               jQuery('#region').val("SG-Singapore");
-       	               jQuery('#region').change();
-			jQuery('#gamemode').change();
-			      //jQuery('#region').hide(200);
-			      //jQuery('#gamemode').hide(200);
+			jQuery('#region').val(oldregionval);
+			jQuery('#region').change();
+			 jQuery('#gamemode').change();
 			      jQuery(this).fadeOut(100).fadeIn(100);
 	    }
 	});
@@ -134,7 +124,7 @@ function agariomodsRuntimeHacks() {
         } else {
             console.log("HAXXED: connecting to " + jQuery('#iphack').val() + "(ignoring: " + data + ")");
             newWebSocket = new window.WebSocket_original("ws://" + jQuery('#iphack').val());
-		jQuery('#includedContent').html("<h3>Connecting to " +  jQuery('#iphack').val() + "</h3><br>Check leaderboard with your friend to ensure you are both on the exact world on the sameserver.<br><br>If you cannot see the same people in the leaderboard as your friend, randomly select a different region and it will try another world on the same server.");
+		jQuery('#includedContent').html("<h3>Connected to " +  jQuery('#iphack').val() + "</h3><br>Check leaderboard with your friend to ensure you are both on the exact world on the sameserver.<br><br>If you cannot see the same people in the leaderboard as your friend, randomly select a different region and it will try another world on the same server.");
 
         }
         return newWebSocket;

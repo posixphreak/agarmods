@@ -2,7 +2,7 @@
 // @name         New Agar Server Selector
 // @namespace	 electronoob-agarmods
 // @version      1.3
-// @description  based on Ununoctium118 earlier hack
+// @description  community driven project for adding features to agar.io game
 // @author       electronoob
 // @match        http://agar.io
 // @grant        none
