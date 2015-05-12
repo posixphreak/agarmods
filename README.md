@@ -1,4 +1,4 @@
-Agarmods Evergreen Server Selector.
+Agarmods Evergreen Server Selector. DEVELOPMENT BRANCH
 ========================================================================
 
 Navigation: [Website][4] | **Script Repository** | [Agar Game][5]
