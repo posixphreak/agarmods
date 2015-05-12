@@ -120,29 +120,6 @@ function agariomodsRuntimeHacks() {
 			      //jQuery(this).fadeOut(100).fadeIn(100);
 	    }
 	});
-	nodeInput.className = "form-control";
-	nodeInput.id = "iphack"
-	nodeInput.style.width = "85%";
-	nodeInput.style.cssFloat = "left";
-	nodeInput.style.cssClear = "right";
-	nodeInput.style.border = "2px solid green";
-	nodeInput.placeholder = "Alternative server ip:port here.";
-	jQuery(playBtn).parent().get(0).appendChild(nodeBr);
-	jQuery(playBtn).parent().get(0).appendChild(nodeInput);
-	jQuery(playBtn).parent().get(0).appendChild(nodeSpan);
-	jQuery('#iphack').change(function() {
-	    if (jQuery('#iphack').val() == "") {
-	        modBlocking = true;
-	    }
-	    modBlocking = false;
-	});
-	jQuery('#playBtn').off();
-	$('.btn-needs-server').prop('disabled', false);
-	jQuery('#playBtn').click(function() {
-	    setNick(document.getElementById('nick').value);
-	    return false;
-	});
-
 }
 
 
