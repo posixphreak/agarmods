@@ -43,7 +43,7 @@ function agariomodsRuntimeHacks() {
 	nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "Type a username");
 	});
 	nodeDiv.id = "includedContent";
-	nodeDiv.style.width = "300px"
+	nodeDiv.style.width = "320px"
 	nodeDiv.style.backgroundColor = "#000000";
 	nodeDiv.style.zIndex = 9999999999;
 	nodeDiv.style.position = "center";
@@ -51,7 +51,7 @@ function agariomodsRuntimeHacks() {
 	nodeDiv.style.left = "-200px";
 	nodeDiv.style.borderRadius = "5px";
 	nodeDiv.style.color = "#dddddd";
-	nodeDiv.innerHTML = "<p><b>Version 1.5.1</b>&nbsp;&nbsp;<small>Thank you for your patience.</small></p> <p>Our Website <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
+	nodeDiv.innerHTML = "<p><b>Version 1.5.2</b>&nbsp;&nbsp;<small>Thank you for your patience.</small></p> <p>Our Website <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
 	nodeDiv.innerHTML += "<b>connections steps</b>";
 	nodeDiv.innerHTML += "\
 	<ul>\
@@ -77,15 +77,20 @@ function agariomodsRuntimeHacks() {
 	nodeSpan.style.paddingLeft = "15px";
 	nodeSpan.addEventListener("click", function (e) {
 	    if (modBlocking == false) {
+                        //jQuery('#region').style.height = "0px";
+                        jQuery('#region').hide();
+                        //jQuery('#gamemode').style.height = "0px";
+                        jQuery('#gamemode').hide();
 	                      console.log ("clicked refresh");
 				var oldregionval = jQuery('#region').val;
 	                      jQuery('#region').val("EU-London");
        	               jQuery('#region').change();
        	               jQuery('#region').val("SG-Singapore");
+			jQuery('#region').change();
 			jQuery('#region').val(oldregionval);
 			jQuery('#region').change();
 			 jQuery('#gamemode').change();
-			      jQuery(this).fadeOut(100).fadeIn(100);
+			      //jQuery(this).fadeOut(100).fadeIn(100);
 	    }
 	});
 	nodeInput.className = "form-control";
@@ -93,6 +98,7 @@ function agariomodsRuntimeHacks() {
 	nodeInput.style.width = "85%";
 	nodeInput.style.cssFloat = "left";
 	nodeInput.style.cssClear = "right";
+	nodeInput.style.border = "2px solid green";
 	nodeInput.placeholder = "Alternative server ip:port here.";
 	jQuery(playBtn).parent().get(0).appendChild(nodeBr);
 	jQuery(playBtn).parent().get(0).appendChild(nodeInput);
@@ -120,11 +126,11 @@ function agariomodsRuntimeHacks() {
     window.WebSocket = function(data) {
         if (modBlocking == true) {
             newWebSocket = new window.WebSocket_original(data);
-		jQuery('#includedContent').html("Here is the IP address of the server you are connected to currently, pass it to your friends for team playing. <h3>" + data.replace('ws://', '') + "</h3>");
+		jQuery('#includedContent').html("Here is the IP address of the server you are connected to currently, pass it to your friends for team playing. <h3>" + data.replace('ws://', '') + "</h3>&nbsp;");
         } else {
             console.log("HAXXED: connecting to " + jQuery('#iphack').val() + "(ignoring: " + data + ")");
             newWebSocket = new window.WebSocket_original("ws://" + jQuery('#iphack').val());
-		jQuery('#includedContent').html("<h3>Connected to " +  jQuery('#iphack').val() + "</h3><br>Check leaderboard with your friend to ensure you are both on the exact world on the sameserver.<br><br>If you cannot see the same people in the leaderboard as your friend, randomly select a different region and it will try another world on the same server.");
+		jQuery('#includedContent').html("<h3>Connected to " +  jQuery('#iphack').val() + "</h3><br>Check leaderboard with your friend to ensure you are both on the exact world on the sameserver.<br><br>If you cannot see the same people in the leaderboard as your friend, press the swirly icon next the ip box to try another world on the same game server.");
 
         }
         return newWebSocket;
