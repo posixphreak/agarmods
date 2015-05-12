@@ -58,7 +58,7 @@ function agariomodsRuntimeHacks() {
 	  <li>1: Get ip address from friend.</li>\
 	  <li>2: Put it in text box below.</li>\
 	  <li>3: Press the swirly icon next to it.</li>\
-	  <p><b>Note:</b> Check with your friend to see whos #1 on the leaderboard</p>\
+	  <p><b>Note:</b> Check with your friend to see whos #1 on the leaderboard</p><h3>Connection troubles are caused by the game server and not our modification! <a href=\"https://www.reddit.com/r/Agario/comments/35ppcm/cors_problem_with_magario/\">More info.</a></h3>\
 	</ul>\
 	\
 	";
