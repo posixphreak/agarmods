@@ -40,7 +40,7 @@ function agariomodsRuntimeHacks() {
 	$( document ).ready(function() {
 	nh = document.getElementById("overlays");
 	cachednh = nh.innerHTML;
-	nh.innerHTML = cachednh.replace("<p>Nickname:</p>", "Type a nickname below");
+	nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "Type a username");
 	});
 	nodeDiv.id = "includedContent";
 	nodeDiv.style.width = "320px"
@@ -58,7 +58,7 @@ function agariomodsRuntimeHacks() {
 	  <li>1: Get ip address from friend.</li>\
 	  <li>2: Put it in text box below.</li>\
 	  <li>3: Press the swirly icon next to it.</li>\
-	  <p><b>Note:</b> Check with your friend to see whos #1 on the leaderboard</p>\
+	  <p><b>Note:</b> Check with your friend to see whos #1 on the leaderboard</p><font color=\"red\">Connection troubles are caused by the game server and not our modification! <a href=\"https://www.reddit.com/r/Agario/comments/35ppcm/cors_problem_with_magario/\">More info.</a></font>\
 	</ul>\
 	\
 	";
