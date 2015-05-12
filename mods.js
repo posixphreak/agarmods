@@ -40,7 +40,7 @@ function agariomodsRuntimeHacks() {
 	$( document ).ready(function() {
 	nh = document.getElementById("overlays");
 	cachednh = nh.innerHTML;
-	nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "Type a username");
+	nh.innerHTML = cachednh.replace("<p>Nickname:</p>", "Type a nickname below");
 	});
 	nodeDiv.id = "includedContent";
 	nodeDiv.style.width = "320px"
