@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         New Agar Server Selector
 // @namespace	 electronoob-agarmods
-// @version      1.3
-// @description  community driven project for adding features to agar.io game
+// @version      1.5.2
+// @description  community run mod feature set for agar.io
 // @author       electronoob
 // @match        http://agar.io
 // @grant        none
