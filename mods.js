@@ -58,7 +58,7 @@ function agariomodsRuntimeHacks() {
 	  <li>1: Get ip address from friend.</li>\
 	  <li>2: Put it in text box below.</li>\
 	  <li>3: Press the swirly icon next to it.</li>\
-	  <p><b>Note:</b> Check with your friend to see whos #1 on the leaderboard</p><font color=\"red\">Connection troubles are caused by the game server and not our modification! <a href=\"https://www.reddit.com/r/Agario/comments/35ppcm/cors_problem_with_magario/\">More info.</a></font>\
+	  <p><b>Note:</b> Check with your friend to see whos #1 on the leaderboard</p><font color=\"red\">Zeach has informed us that he is moving the master server today which will make things a little bumpy but it will be resolved soon, thanks Zeach for being awesome! <a href=\"http://www.reddit.com/r/Agario/comments/35esz0/automatic_clan_tag_stripping/cr6ltan\">More info.</a></font>\
 	</ul>\
 	\
 	";
