@@ -42,33 +42,6 @@ function agariomodsRuntimeHacks() {
 	cachednh = nh.innerHTML;
 	nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "Type a username");
 	});
-	/*********************
-	*Irra's testing stuff*
-	**********************/
-	nodeInput.className = "form-control";
-	nodeInput.id = "iphack"
-	nodeInput.style.width = "85%";
-	nodeInput.style.cssFloat = "left";
-	nodeInput.style.cssClear = "right";
-	nodeInput.placeholder = "Alternative server ip:port here.";
-	jQuery(playBtn).parent().get(0).appendChild(nodeBr);
-	jQuery(playBtn).parent().get(0).appendChild(nodeInput);
-	jQuery(playBtn).parent().get(0).appendChild(nodeSpan);
-	jQuery('#iphack').change(function() {
-	    if (jQuery('#iphack').val() == "") {
-	        modBlocking = true;
-	    }
-	    modBlocking = false;
-	});
-	/*************************
-	*End Irra's Testing Stuff*
-	*************************/
-	jQuery('#playBtn').off();
-	$('.btn-needs-server').prop('disabled', false);
-	jQuery('#playBtn').click(function() {
-	    setNick(document.getElementById('nick').value);
-	    return false;
-	});
 	nodeDiv.id = "includedContent";
 	nodeDiv.style.width = "320px"
 	nodeDiv.style.backgroundColor = "#000000";
@@ -120,6 +93,29 @@ function agariomodsRuntimeHacks() {
 			      //jQuery(this).fadeOut(100).fadeIn(100);
 	    }
 	});
+	nodeInput.className = "form-control";
+	nodeInput.id = "iphack"
+	nodeInput.style.width = "85%";
+	nodeInput.style.cssFloat = "left";
+	nodeInput.style.cssClear = "right";
+	nodeInput.style.border = "2px solid green";
+	nodeInput.placeholder = "Alternative server ip:port here.";
+	jQuery(playBtn).parent().get(0).appendChild(nodeBr);
+	jQuery(playBtn).parent().get(0).appendChild(nodeInput);
+	jQuery(playBtn).parent().get(0).appendChild(nodeSpan);
+	jQuery('#iphack').change(function() {
+	    if (jQuery('#iphack').val() == "") {
+	        modBlocking = true;
+	    }
+	    modBlocking = false;
+	});
+	jQuery('#playBtn').off();
+	$('.btn-needs-server').prop('disabled', false);
+	jQuery('#playBtn').click(function() {
+	    setNick(document.getElementById('nick').value);
+	    return false;
+	});
+
 }
 
 
