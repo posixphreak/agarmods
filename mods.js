@@ -60,7 +60,9 @@ function agariomodsRuntimeHacks() {
 	  <li>3: Press the swirly icon next to it.</li>\
 	  <p><b>Note:</b> Check with your friend to see whos #1 on the leaderboard</p>\
 	</ul>\
-<small style=\"background-color: #ffffff; color: #000000;\"><font color=\"red\">Current Google Chrome is a bit pants</font>, for many people agario just wont work but if you upgrade to the latest development edition of chrome all is perfect once again! <a href=\"https://www.google.co.uk/chrome/browser/canary.html\"><b>Download Google Chrome Canary here</b></a>. You will need to install tampermonkey and our script again but it's worth it, right? :D</small>\
+<divstyle=\"background-color: #ffffff; color: #000000;\">\
+<h3>Disable adblocking software!</h3><small>We finally tracked down an issue to adblocking software, Turns out that it breaks the game and our modifications in random and unexpected ways. Beside Zeach provides this game free and we all need to support him!</small>\
+</div>\
 	";
 	nodeDiv.innerHTML += "<center><p>Our NEW Forum <a href='http://forum.agariomods.com/' target='_blank'>is finally here!</a> Please come and post.</center></p>";
 	jQuery('#region').parent().get(0).appendChild(document.createElement("br"));
