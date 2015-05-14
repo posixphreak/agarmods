@@ -59,7 +59,7 @@ function agariomodsRuntimeHacks() {
 	  <li>2: Put it in text box below.</li>\
 	  <li>3: Press the swirly icon next to it.</li>\
 	  <p><b>Note:</b> Check with your friend to see whos #1 on the leaderboard</p>\
-<font color=\"red\">Current Google Chrome is a bit pants, for many people agario just wont work but if you upgrade to the latest development edition of chrome all is perfect once again! <a href=\"https://www.google.co.uk/chrome/browser/canary.html\">Google Chrome Canary</a>. You will need to install tampermonkey and our script againg but it's worth it, right? :D</font>\
+<small><font color=\"red\">Current Google Chrome is a bit pants</font>, for many people agario just wont work but if you upgrade to the latest development edition of chrome all is perfect once again! <a href=\"https://www.google.co.uk/chrome/browser/canary.html\">Google Chrome Canary</a>. You will need to install tampermonkey and our script again but it's worth it, right? :D</small>\
 	</ul>\
 	\
 	";
