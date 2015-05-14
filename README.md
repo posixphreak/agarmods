@@ -3,6 +3,10 @@ Agarmods Evergreen Server Selector.
 
 Navigation: [Website][4] | **Script Repository** | [Agar Game][5]
 
+![electronoob as a skin playing agar.io](http://agariomods.com/preview.gif "electronoob playing agar.io with our script.")
+We are presently rolling our custom skins. 
+
+
 [1]: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?utm_source=chrome-ntp-icon
 [2]: https://addons.mozilla.org/en-Us/firefox/addon/greasemonkey/
 [3]: http://botb.club/~e/agar.io/mods.user.js.html
