@@ -13,7 +13,7 @@ if(discovered_mainouturl != !1) {
 	$.ajax({
   	url: discovered_mainouturl,
  	 	success:function(data){
-			gamejs = "window.agariomods = " + data.replace("socket open","intercepted game js socket open");
+			gamejs = "window.agariomods = " + data.replace("socket open","socket open (agariomods.com mod in place)");
 			offset = gamejs.search("..b..src");
 			W = gamejs.substr(offset,1);
 			agariomodsRuntimeInjection();
@@ -30,13 +30,10 @@ function agariomodsRuntimeInjection() {
 	agariomodsRuntimeHacks();
 }
 function agariomodsRuntimePatches() {
-
 	gamejs = gamejs.replace(';reddit;',';reddit;electronoob;');
 	gamejs = gamejs.replace(W + '[b]=new Image,'+W+'[b].src="skins/"+b+".png"',W +'[b]=new Image,'+W+'[b].crossOrigin = "Anonymous",'+W+'[b].src="skins/"+b+".png"');
 	gamejs = gamejs.replace('b=this.name.toLowerCase();', 'b=this.name.toLowerCase();var agariomods="";if(b == "electronoob") {agariomods="http://agariomods.com/skins/electronoob";} else {agariomods="http://agar.io/skins/" + this.name.toLowerCase();}');
 	gamejs = gamejs.replace(W +'[b].src="skins/"+b+".png"',W+'[b].src=agariomods+".png"');
-
-
 }
 function agariomodsRuntimeHacks() {
 	var nodeDiv = document.createElement("div");
@@ -54,15 +51,15 @@ function agariomodsRuntimeHacks() {
 	nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "Type a username");
 	});
 	nodeDiv.id = "includedContent";
-	nodeDiv.style.width = "320px"
+	nodeDiv.style.width = "640px"
 	nodeDiv.style.backgroundColor = "#000000";
 	nodeDiv.style.zIndex = 9999999999;
 	nodeDiv.style.position = "center";
 	nodeDiv.style.padding = "5px";
-	nodeDiv.style.left = "-200px";
+	nodeDiv.style.left = "-170px";
 	nodeDiv.style.borderRadius = "5px";
 	nodeDiv.style.color = "#dddddd";
-	nodeDiv.innerHTML = "<p><b>Version 1.5.2</b>&nbsp;&nbsp;<small>Thank you for your patience.</small></p> <p>Our Website <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
+	nodeDiv.innerHTML = "<p><b>Version 1.6.0</b>&nbsp;&nbsp;<small>custom skins on their way</small></p> <p>Our Website <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
 	nodeDiv.innerHTML += "<b>connections steps</b>";
 	nodeDiv.innerHTML += "\
 	<ul>\
@@ -71,7 +68,9 @@ function agariomodsRuntimeHacks() {
 	  <li>3: Press the swirly icon next to it.</li>\
 	  <p><b>Note:</b> Check with your friend to see whos #1 on the leaderboard</p>\
 	</ul>\
-<small style=\"background-color: #ffffff; color: #000000;\"><font color=\"red\">Current Google Chrome is a bit pants</font>, for many people agario just wont work but if you upgrade to the latest development edition of chrome all is perfect once again! <a href=\"https://www.google.co.uk/chrome/browser/canary.html\"><b>Download Google Chrome Canary here</b></a>. You will need to install tampermonkey and our script again but it's worth it, right? :D</small>\
+	<div style=\"background-color: #ffffff; color: #000000;\">\
+	<h3>Disable adblocking software!</h3><small>We finally tracked down an issue to adblocking software, Turns out that it breaks the game and our modifications in random and unexpected ways. Beside Zeach provides this game free and we all need to support him!</small>\
+	</div>\
 	";
 	nodeDiv.innerHTML += "<center><p><small><a href='http://www.agariomods.com/mumble.html' target='_blank'>mumble.agariomods.com:2387</a></small></center></p>";
 	jQuery('#region').parent().get(0).appendChild(document.createElement("br"));
