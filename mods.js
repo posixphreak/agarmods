@@ -61,7 +61,7 @@ function agariomodsRuntimeHacks() {
 	nodeDiv.style.left = "-170px";
 	nodeDiv.style.borderRadius = "5px";
 	nodeDiv.style.color = "#dddddd";
-	nodeDiv.innerHTML = "<p><b>Version 1.6.1</b>&nbsp;&nbsp;<small>custom skins on their way</small></p> <p>Our <a target=\"_blank\" href=\"http://www.agarmods.com/\">website</a>, <a target=\"_blank\" href=\"http://forum.agarmods.com/\">forum</a>, and <a target=\"_blank\" href=\"http://www.agarmods.com/mumble.html\">mumble</a>.</p>";
+	nodeDiv.innerHTML = "<p><b>Version 1.6.1</b>&nbsp;&nbsp;<small>custom skins on their way</small></p> <p>Our <a target=\"_blank\" href=\"http://www.agariomods.com/\">website</a>, <a target=\"_blank\" href=\"http://forum.agariomods.com/\">forum</a>, and <a target=\"_blank\" href=\"http://www.agariomods.com/mumble.html\">mumble</a>.</p>";
 	nodeDiv.innerHTML += "<b>connections steps</b>";
 	nodeDiv.innerHTML += "\
 	<ul>\
