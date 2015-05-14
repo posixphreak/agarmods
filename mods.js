@@ -36,19 +36,21 @@ function agariomodsRuntimePatches() {
 	gamejs = gamejs.replace(W +'[b].src="skins/"+b+".png"',W+'[b].src=agariomods+".png"');
 }
 function agariomodsRuntimeHacks() {
+	jQuery('#helloDialog').css({top: '-100px'});
+	jQuery('#helloDialog').css({margin: '5px auto'});
 	var nodeDiv = document.createElement("div");
 	//<!-- HYDRO's CODE -->
 	$( document ).ready(function() {
 	hd = document.getElementById("helloDialog");
 	cachedhd = hd.innerHTML;
-	hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center>AgarioMods.com Evergreen Scripts</center>");
+	hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center><small>AgarioMods.com Evergreen Scripts</small></center>");
 	});
 	//<!-- INTEL's CODE -->
 	document.getElementById("nick").placeholder = "Name";
 	$( document ).ready(function() {
 	nh = document.getElementById("overlays");
 	cachednh = nh.innerHTML;
-	nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "Type a username");
+	nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "<small>enter a name</small>");
 	});
 	nodeDiv.id = "includedContent";
 	nodeDiv.style.width = "640px"
@@ -59,7 +61,7 @@ function agariomodsRuntimeHacks() {
 	nodeDiv.style.left = "-170px";
 	nodeDiv.style.borderRadius = "5px";
 	nodeDiv.style.color = "#dddddd";
-	nodeDiv.innerHTML = "<p><b>Version 1.6.0</b>&nbsp;&nbsp;<small>custom skins on their way</small></p> <p>Our Website <a target=\"_blank\" href=\"http://www.agarmods.com/\">Agariomods.com</a>.</p>";
+	nodeDiv.innerHTML = "<p><b>Version 1.6.1</b>&nbsp;&nbsp;<small>custom skins on their way</small></p> <p>Our <a target=\"_blank\" href=\"http://www.agarmods.com/\">website</a>, <a target=\"_blank\" href=\"http://forum.agarmods.com/\">forum</a>, and <a target=\"_blank\" href=\"http://www.agarmods.com/mumble.html\">mumble</a>.</p>";
 	nodeDiv.innerHTML += "<b>connections steps</b>";
 	nodeDiv.innerHTML += "\
 	<ul>\
@@ -69,10 +71,9 @@ function agariomodsRuntimeHacks() {
 	  <p><b>Note:</b> Check with your friend to see whos #1 on the leaderboard</p>\
 	</ul>\
 	<div style=\"background-color: #ffffff; color: #000000;\">\
-	<h3>Disable adblocking software!</h3><small>We finally tracked down an issue to adblocking software, Turns out that it breaks the game and our modifications in random and unexpected ways. Beside Zeach provides this game free and we all need to support him!</small>\
+	<b>Disable adblocking software!</b>&nbsp;<small>We finally tracked down an issue to adblocking software, Turns out that it breaks the game and our modifications in random and unexpected ways. Beside Zeach provides this game free and we all need to support him!</small>\
 	</div>\
 	";
-	nodeDiv.innerHTML += "<center><p><small><a href='http://www.agariomods.com/mumble.html' target='_blank'>mumble.agariomods.com:2387</a></small></center></p>";
 	jQuery('#region').parent().get(0).appendChild(document.createElement("br"));
 	jQuery('#region').parent().get(0).appendChild(nodeDiv);
 	var selector = jQuery('#region');
