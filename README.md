@@ -5,7 +5,7 @@ Navigation: [Website][4] | **Script Repository** | [Agar Game][5]
 
 ![electronoob as a skin playing agar.io](http://agariomods.com/preview.gif "electronoob playing agar.io with our script.")
 
-We are presently rolling our custom skins. 
+We are presently rolling out custom skins!
 
 
 [1]: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?utm_source=chrome-ntp-icon
