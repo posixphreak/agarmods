@@ -62,7 +62,7 @@ function agariomodsRuntimeHacks() {
 	</ul>\
 <small style=\"background-color: #ffffff; color: #000000;\"><font color=\"red\">Current Google Chrome is a bit pants</font>, for many people agario just wont work but if you upgrade to the latest development edition of chrome all is perfect once again! <a href=\"https://www.google.co.uk/chrome/browser/canary.html\"><b>Download Google Chrome Canary here</b></a>. You will need to install tampermonkey and our script again but it's worth it, right? :D</small>\
 	";
-	nodeDiv.innerHTML += "<center><p><small><a href='http://www.agariomods.com/mumble.html' target='_blank'>mumble.agariomods.com:2387</a></small></center></p>";
+	nodeDiv.innerHTML += "<center><p>Our NEW Forum <a href='http://forum.agariomods.com/' target='_blank'>is finally here!</a> Please come and post.</center></p>";
 	jQuery('#region').parent().get(0).appendChild(document.createElement("br"));
 	jQuery('#region').parent().get(0).appendChild(nodeDiv);
 	var selector = jQuery('#region');
