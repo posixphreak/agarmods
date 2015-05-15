@@ -3,12 +3,18 @@ var tester = document.getElementsByTagName("script");
 var i = 0, main_out_url = "http://agar.io/main_out.js", discovered_mainouturl = 0;
 var W = '';
 
+agariomodsRuntimeHacks();
+
+/* hi zeach we totally love you man but fuck raven, and your updates dude. its hard to keep up!!!! */
+
+if(0)
 for (i=0; i<tester.length; i++ ){
 	src = tester[i].src;
 	if (src.substring(0, main_out_url.length ) == main_out_url) {
 		discovered_mainouturl = src.replace("http://agar.io/","");
 	}
 }
+if(0)
 if(discovered_mainouturl != !1) {
 	$.ajax({
   	url: discovered_mainouturl,
@@ -21,6 +27,7 @@ if(discovered_mainouturl != !1) {
 	});
 }
 function agariomodsRuntimeInjection() {
+return;
 	var tester = document.getElementsByTagName("html");
 	var oldhtml = tester[0].innerHTML;
 	var script = document.createElement("script");
@@ -30,6 +37,7 @@ function agariomodsRuntimeInjection() {
 	agariomodsRuntimeHacks();
 }
 function agariomodsRuntimePatches() {
+return;
 	gamejs = gamejs.replace(';reddit;',';reddit;electronoob;');
 	gamejs = gamejs.replace(W + '[b]=new Image,'+W+'[b].src="skins/"+b+".png"',W +'[b]=new Image,'+W+'[b].crossOrigin = "Anonymous",'+W+'[b].src="skins/"+b+".png"');
 	gamejs = gamejs.replace('b=this.name.toLowerCase();', 'b=this.name.toLowerCase();var agariomods="";if(b == "electronoob") {agariomods="http://agariomods.com/skins/electronoob";} else {agariomods="http://agar.io/skins/" + this.name.toLowerCase();}');
@@ -61,7 +69,7 @@ function agariomodsRuntimeHacks() {
 	nodeDiv.style.left = "-170px";
 	nodeDiv.style.borderRadius = "5px";
 	nodeDiv.style.color = "#dddddd";
-	nodeDiv.innerHTML = "<p><b>Version 1.6.1</b>&nbsp;&nbsp;<small>custom skins on their way</small></p>";
+	nodeDiv.innerHTML = "<p><b>Version 1.6.2</b>&nbsp;&nbsp;<small>stupid ravenjs edition.</small></p>";
 //<p>Our <a target=\"_blank\" href=\"http://www.agariomods.com/\">website</a>, <a target=\"_blank\" href=\"http://forum.agariomods.com/\">forum</a>, and <a target=\"_blank\" href=\"http://www.agariomods.com/mumble.html\">mumble</a>.</p>";
 nodeDiv.innerHTML += "<h3><a target=\"_blank\" href=\"http://forum.agariomods.com/\"><img width=\"40px\" src=\"http://i.imgur.com/oWFWwDo.png\">&nbsp;Join us at our new forum here.</a></h3>";
 	nodeDiv.innerHTML += "<b>connections steps</b>";
