@@ -3,31 +3,34 @@ var tester = document.getElementsByTagName("script");
 var i = 0, main_out_url = "http://agar.io/main_out.js", discovered_mainouturl = 0;
 var W = '';
 
-agariomodsRuntimeHacks();
-
-/* hi zeach we totally love you man but fuck raven, and your updates dude. its hard to keep up!!!! */
-
-if(0)
 for (i=0; i<tester.length; i++ ){
 	src = tester[i].src;
 	if (src.substring(0, main_out_url.length ) == main_out_url) {
 		discovered_mainouturl = src.replace("http://agar.io/","");
 	}
 }
-if(0)
-if(discovered_mainouturl != !1) {
-	$.ajax({
-  	url: discovered_mainouturl,
- 	 	success:function(data){
-			gamejs = "window.agariomods = " + data.replace("socket open","socket open (agariomods.com mod in place)");
-			offset = gamejs.search("..b..src");
-			W = gamejs.substr(offset,1);
-			agariomodsRuntimeInjection();
-  		}
+
+if(discovered_mainouturl != 0) {
+	httpGet(discovered_mainouturl, function(data) {
+		gamejs = "window.agariomods = " + data.replace("socket open","socket open (agariomods.com mod in place)");
+		offset = gamejs.search("..b..src");
+		W = gamejs.substr(offset,1);
+		agariomodsRuntimeInjection();
 	});
 }
+
+// XMLHttp, because apparently raven is doing funky stuff with jQuery
+function httpGet(theUrl, callback) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", theUrl, true);
+    xmlHttp.send(null);
+	xmlHttp.onreadystatechange = function() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			callback(xmlHttp.responseText);
+		}
+	};
+}
 function agariomodsRuntimeInjection() {
-return;
 	var tester = document.getElementsByTagName("html");
 	var oldhtml = tester[0].innerHTML;
 	var script = document.createElement("script");
@@ -37,11 +40,12 @@ return;
 	agariomodsRuntimeHacks();
 }
 function agariomodsRuntimePatches() {
-return;
 	gamejs = gamejs.replace(';reddit;',';reddit;electronoob;');
 	gamejs = gamejs.replace(W + '[b]=new Image,'+W+'[b].src="skins/"+b+".png"',W +'[b]=new Image,'+W+'[b].crossOrigin = "Anonymous",'+W+'[b].src="skins/"+b+".png"');
 	gamejs = gamejs.replace('b=this.name.toLowerCase();', 'b=this.name.toLowerCase();var agariomods="";if(b == "electronoob") {agariomods="http://agariomods.com/skins/electronoob";} else {agariomods="http://agar.io/skins/" + this.name.toLowerCase();}');
 	gamejs = gamejs.replace(W +'[b].src="skins/"+b+".png"',W+'[b].src=agariomods+".png"');
+	// lol raven
+	gamejs = gamejs.replace('g.Raven&&g.Raven.config("https://2a85d1d3fb114384a2758cde7de2bef7@app.getsentry.com/43938",{release:"2",whitelistUrls:["agar.io/"]}).install();', "");
 }
 function agariomodsRuntimeHacks() {
 	jQuery('#helloDialog').css({top: '-100px'});
@@ -158,4 +162,3 @@ nodeDiv.innerHTML += "<h3><a target=\"_blank\" href=\"http://forum.agariomods.co
 
     };
 })(window);
-
