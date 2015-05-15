@@ -1,6 +1,8 @@
 Agarmods Evergreen Server Selector.
 ========================================================================
 
+[![Join the chat at https://gitter.im/electronoob/agarmods](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/electronoob/agarmods?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Navigation: [Website][4] | **Script Repository** | [Agar Game][5]
 
 ![electronoob as a skin playing agar.io](http://agariomods.com/preview.gif "electronoob playing agar.io with our script.")
