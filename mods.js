@@ -48,6 +48,28 @@ function agariomodsRuntimePatches() {
 	gamejs = gamejs.replace(W + '[b].src="skins/"+b+".png"', W + '[b].src=agariomods+".png"');
 	// lol raven
 	gamejs = gamejs.replace('g.Raven&&g.Raven.config("https://2a85d1d3fb114384a2758cde7de2bef7@app.getsentry.com/43938",{release:"2",whitelistUrls:["agar.io/"]}).install();', "");
+
+	//haxx
+	var shouldShowMass = /setShowMass=function\(\w+\){(\w+)=\w+};/.exec(gamejs)[1];
+	var match = /(\w+)=-1!=(\w+)\.indexOf\(this\);/.exec(gamejs);
+	var isOwnedCell = match[1],
+		ownedCells = match[2];
+	var sizeCache = /(\w+)=this\.sizeCache/.exec(gamejs)[1];
+
+	var haxx = "if (!" + isOwnedCell + ") { \
+		var biggest = 0; \
+		" + ownedCells + ".forEach(function(x) { \
+			if (x.size > biggest) { \
+				biggest = x.size; \
+			} \
+		}); \
+		var size = ~~((this.size * this.size) / (biggest * biggest) * 100) + '%'; \
+	} else { \
+		var size = ~~(this.size * this.size / 100); \
+	}";
+	gamejs = gamejs.replace(shouldShowMass + '&&' + isOwnedCell + '&&', haxx + shouldShowMass + '&&');
+	gamejs = gamejs.replace(sizeCache + '.setValue(~~(this.size*this.size/100))', sizeCache + '.setValue(size)');
+	gamejs = gamejs.replace(sizeCache + '.setSize(this.getNameSize()/2)', sizeCache + '.setSize(this.getNameSize() * 1.5)');
 }
 
 function agariomodsRuntimeHacks() {
