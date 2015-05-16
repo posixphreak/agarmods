@@ -145,10 +145,7 @@ function createUI() {
 	jQuery(playBtn).parent().get(0).appendChild(nodeInput);
 	jQuery(playBtn).parent().get(0).appendChild(nodeSpan);
 	jQuery('#iphack').change(function() {
-		if (jQuery('#iphack').val() == "") {
-			modBlocking = true;
-		}
-		modBlocking = false;
+		modBlocking = jQuery('#iphack').val() == "";
 	});
 	jQuery('#playBtn').off();
 	$('.btn-needs-server').prop('disabled', false);
