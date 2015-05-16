@@ -1,28 +1,16 @@
-var gamejs = "", modBlocking = true;
-var tester = document.getElementsByTagName("script");
-var i = 0, main_out_url = "http://agar.io/main_out.js", discovered_mainouturl = 0;
-var W = '';
+var modBlocking = true;
 
-for (i = 0; i < tester.length; i++) {
-	src = tester[i].src;
-	if (src.substring(0, main_out_url.length) == main_out_url) {
-		discovered_mainouturl = src.replace("http://agar.io/", "");
-	}
-}
-
-if (discovered_mainouturl != 0) {
-	httpGet(discovered_mainouturl, function(data) {
-		gamejs = "window.agariomods = " + data.replace("socket open", "socket open (agariomods.com mod in place)");
-		offset = gamejs.search("..b..src");
-		W = gamejs.substr(offset, 1);
-		agariomodsRuntimeInjection();
+function main() {
+	httpGet("//agar.io/main_out.js", function(data) {
+		var gamejs = "window.agariomods = " + data;
+		injectScript(gamejs);
 	});
 }
 
 // XMLHttp, because apparently raven is doing funky stuff with jQuery
-function httpGet(theUrl, callback) {
+function httpGet(url, callback) {
 	var xmlHttp = new XMLHttpRequest();
-	xmlHttp.open("GET", theUrl, true);
+	xmlHttp.open("GET", url, true);
 	xmlHttp.send(null);
 	xmlHttp.onreadystatechange = function() {
 		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
@@ -31,22 +19,20 @@ function httpGet(theUrl, callback) {
 	};
 }
 
-function agariomodsRuntimeInjection() {
-	var tester = document.getElementsByTagName("html");
-	var oldhtml = tester[0].innerHTML;
+function injectScript(gamejs) {
+	gamejs = patchScript(gamejs);
+
 	var script = document.createElement("script");
-	agariomodsRuntimePatches();
 	script.innerHTML = gamejs;
 	document.head.appendChild(script);
-	agariomodsRuntimeHacks();
+
+	createUI();
 }
 
-function agariomodsRuntimePatches() {
-	gamejs = gamejs.replace(';reddit;', ';reddit;electronoob;');
-	gamejs = gamejs.replace(W + '[b]=new Image,' + W + '[b].src="skins/"+b+".png"', W + '[b]=new Image,' + W + '[b].crossOrigin = "Anonymous",' + W + '[b].src="skins/"+b+".png"');
-	gamejs = gamejs.replace('b=this.name.toLowerCase();', 'b=this.name.toLowerCase();var agariomods="";if(b == "electronoob") {agariomods="http://agariomods.com/skins/electronoob";} else {agariomods="http://agar.io/skins/" + this.name.toLowerCase();}');
-	gamejs = gamejs.replace(W + '[b].src="skins/"+b+".png"', W + '[b].src=agariomods+".png"');
-	// lol raven
+function patchScript(gamejs) {
+	//branding
+	gamejs = gamejs.replace("socket open", "socket open (agariomods.com mod in place)");
+	// fix raven
 	gamejs = gamejs.replace('g.Raven&&g.Raven.config("https://2a85d1d3fb114384a2758cde7de2bef7@app.getsentry.com/43938",{release:"2",whitelistUrls:["agar.io/"]}).install();', "");
 
 	//haxx
@@ -70,29 +56,28 @@ function agariomodsRuntimePatches() {
 	gamejs = gamejs.replace(shouldShowMass + '&&' + isOwnedCell + '&&', haxx + shouldShowMass + '&&');
 	gamejs = gamejs.replace(sizeCache + '.setValue(~~(this.size*this.size/100))', sizeCache + '.setValue(size)');
 	gamejs = gamejs.replace(sizeCache + '.setSize(this.getNameSize()/2)', sizeCache + '.setSize(this.getNameSize() * 1.5)');
+	return gamejs;
 }
 
-function agariomodsRuntimeHacks() {
+function createUI() {
 	jQuery('#helloDialog').css({
 		top: '-100px'
 	});
 	jQuery('#helloDialog').css({
 		margin: '5px auto'
 	});
-	var nodeDiv = document.createElement("div");
 	//<!-- HYDRO's CODE -->
 	$(document).ready(function() {
 		hd = document.getElementById("helloDialog");
-		cachedhd = hd.innerHTML;
-		hd.innerHTML = cachedhd.replace("<center>Hello</center>", "<center><small>AgarioMods.com Evergreen Scripts</small></center>");
+		hd.innerHTML = hd.innerHTML.replace("<center>Hello</center>", "<center><small>AgarioMods.com Evergreen Scripts</small></center>");
 	});
 	//<!-- INTEL's CODE -->
 	document.getElementById("nick").placeholder = "Name";
 	$(document).ready(function() {
 		nh = document.getElementById("overlays");
-		cachednh = nh.innerHTML;
-		nh.innerHTML = cachednh.replace("<p>Type your nick or leave it empty:</p>", "");
+		nh.innerHTML = nh.innerHTML.replace("<p>Type your nick or leave it empty:</p>", "");
 	});
+	var nodeDiv = document.createElement("div");
 	nodeDiv.id = "includedContent";
 	nodeDiv.style.width = "640px"
 	nodeDiv.style.backgroundColor = "#000000";
@@ -172,6 +157,7 @@ function agariomodsRuntimeHacks() {
 
 }
 
+main();
 
 (function(window) {
 	var WebSocket_original = window.WebSocket;
