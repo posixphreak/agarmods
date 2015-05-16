@@ -42,18 +42,20 @@ function patchScript(gamejs) {
 		ownedCells = match[2];
 	var sizeCache = /(\w+)=this\.sizeCache/.exec(gamejs)[1];
 
-	var haxx = "if (!" + isOwnedCell + ") { \
+	var haxx = " \
+	if (!" + isOwnedCell + ") { \
 		var biggest = 0; \
 		" + ownedCells + ".forEach(function(x) { \
 			if (x.size > biggest) { \
 				biggest = x.size; \
 			} \
 		}); \
+		" + isOwnedCell + " = 1; \
 		var size = ~~((this.size * this.size) / (biggest * biggest) * 100) + '%'; \
 	} else { \
 		var size = ~~(this.size * this.size / 100); \
 	}";
-	gamejs = gamejs.replace(shouldShowMass + '&&' + isOwnedCell + '&&', haxx + shouldShowMass + '&&');
+	gamejs = gamejs.replace(shouldShowMass + '&&', haxx + shouldShowMass + '&&');
 	gamejs = gamejs.replace(sizeCache + '.setValue(~~(this.size*this.size/100))', sizeCache + '.setValue(size)');
 	gamejs = gamejs.replace(sizeCache + '.setSize(this.getNameSize()/2)', sizeCache + '.setSize(this.getNameSize() * 1.5)');
 	return gamejs;
