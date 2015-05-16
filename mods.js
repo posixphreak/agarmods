@@ -62,10 +62,10 @@ function patchScript(gamejs) {
 }
 
 function createUI() {
-	jQuery('#helloDialog').css({
+	$('#helloDialog').css({
 		top: '-100px'
 	});
-	jQuery('#helloDialog').css({
+	$('#helloDialog').css({
 		margin: '5px auto'
 	});
 	//<!-- HYDRO's CODE -->
@@ -104,10 +104,10 @@ function createUI() {
 	<b>Disable adblocking software!</b>&nbsp;<small>We finally tracked down an issue to adblocking software, Turns out that it breaks the game and our modifications in random and unexpected ways. Beside Zeach provides this game free and we all need to support him!</small>\
 	</div>\
 	";
-	jQuery('#region').parent().get(0).appendChild(document.createElement("br"));
-	jQuery('#region').parent().get(0).appendChild(nodeDiv);
-	var selector = jQuery('#region');
-	var playBtn = jQuery('#playBtn');
+	$('#region').parent().get(0).appendChild(document.createElement("br"));
+	$('#region').parent().get(0).appendChild(nodeDiv);
+	var selector = $('#region');
+	var playBtn = $('#playBtn');
 	var nodeInput = document.createElement("input");
 	var nodeSpan = document.createElement("span");
 	var nodeBr = document.createElement("br");
@@ -117,21 +117,21 @@ function createUI() {
 	nodeSpan.style.paddingTop = "5px";
 	nodeSpan.style.paddingLeft = "15px";
 	nodeSpan.addEventListener("click", function(e) {
-		if (modBlocking == false) {
-			//jQuery('#region').style.height = "0px";
-			jQuery('#region').hide();
-			//jQuery('#gamemode').style.height = "0px";
-			jQuery('#gamemode').hide();
+		if (!modBlocking) {
+			//$('#region').style.height = "0px";
+			$('#region').hide();
+			//$('#gamemode').style.height = "0px";
+			$('#gamemode').hide();
 			console.log("clicked refresh");
-			var oldregionval = jQuery('#region').val;
-			jQuery('#region').val("EU-London");
-			jQuery('#region').change();
-			jQuery('#region').val("SG-Singapore");
-			jQuery('#region').change();
-			jQuery('#region').val(oldregionval);
-			jQuery('#region').change();
-			jQuery('#gamemode').change();
-			//jQuery(this).fadeOut(100).fadeIn(100);
+			var oldregionval = $('#region').val;
+			$('#region').val("EU-London");
+			$('#region').change();
+			$('#region').val("SG-Singapore");
+			$('#region').change();
+			$('#region').val(oldregionval);
+			$('#region').change();
+			$('#gamemode').change();
+			//$(this).fadeOut(100).fadeIn(100);
 		}
 	});
 	nodeInput.className = "form-control";
@@ -141,15 +141,15 @@ function createUI() {
 	nodeInput.style.cssClear = "right";
 	nodeInput.style.border = "2px solid green";
 	nodeInput.placeholder = "Alternative server ip:port here.";
-	jQuery(playBtn).parent().get(0).appendChild(nodeBr);
-	jQuery(playBtn).parent().get(0).appendChild(nodeInput);
-	jQuery(playBtn).parent().get(0).appendChild(nodeSpan);
-	jQuery('#iphack').change(function() {
-		modBlocking = jQuery('#iphack').val() == "";
+	$(playBtn).parent().get(0).appendChild(nodeBr);
+	$(playBtn).parent().get(0).appendChild(nodeInput);
+	$(playBtn).parent().get(0).appendChild(nodeSpan);
+	$('#iphack').change(function() {
+		modBlocking = $.trim($('#iphack').val()) == "";
 	});
-	jQuery('#playBtn').off();
+	$('#playBtn').off();
 	$('.btn-needs-server').prop('disabled', false);
-	jQuery('#playBtn').click(function() {
+	$('#playBtn').click(function() {
 		setNick(document.getElementById('nick').value);
 		return false;
 	});
@@ -163,16 +163,15 @@ main();
 	window.WebSocket_original = WebSocket_original;
 	var newWebSocket = 0;
 	window.WebSocket = function(data) {
-		if (modBlocking == true) {
+		if (modBlocking) {
 			newWebSocket = new window.WebSocket_original(data);
-			jQuery('#includedContent').html("Here is the IP address of the server you are connected to currently, pass it to your friends for team playing. <h3>" + data.replace('ws://', '') + "</h3>&nbsp;");
+			$('#includedContent').html("Here is the IP address of the server you are connected to currently, pass it to your friends for team playing. <h3>" + data.replace('ws://', '') + "</h3>&nbsp;");
 		} else {
-			console.log("HAXXED: connecting to " + jQuery('#iphack').val() + "(ignoring: " + data + ")");
-			newWebSocket = new window.WebSocket_original("ws://" + jQuery('#iphack').val());
-			jQuery('#includedContent').html("<h3>Connected to " + jQuery('#iphack').val() + "</h3><br>Check leaderboard with your friend to ensure you are both on the exact world on the sameserver.<br><br>If you cannot see the same people in the leaderboard as your friend, press the swirly icon next the ip box to try another world on the same game server.");
-
+			var iphack = $('#iphack').val();
+			console.log("HAXXED: connecting to " + iphack + "(ignoring: " + data + ")");
+			newWebSocket = new window.WebSocket_original("ws://" + iphack);
+			$('#includedContent').html("<h3>Connected to " + iphack + "</h3><br>Check leaderboard with your friend to ensure you are both on the exact world on the sameserver.<br><br>If you cannot see the same people in the leaderboard as your friend, press the swirly icon next the ip box to try another world on the same game server.");
 		}
 		return newWebSocket;
-
 	};
 })(window);
