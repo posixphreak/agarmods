@@ -30,34 +30,67 @@ function injectScript(gamejs) {
 }
 
 function patchScript(gamejs) {
-	//branding
-	gamejs = gamejs.replace("socket open", "socket open (agariomods.com mod in place)");
-	// fix raven
-	gamejs = gamejs.replace('g.Raven&&g.Raven.config("https://2a85d1d3fb114384a2758cde7de2bef7@app.getsentry.com/43938",{release:"2",whitelistUrls:["agar.io/"]}).install();', "");
+	// add another cache to Cell class
+	gamejs = gamejs.replace('sizeCache:null,', 'sizeCache:null,ratioCache:null,');
 
-	//haxx
-	var shouldShowMass = /setShowMass=function\(\w+\){(\w+)=\w+};/.exec(gamejs)[1];
+	var haxx = function() {
+		if (this.size < 20) { // don't render for "skittles"
+			$gameCanvas.restore();
+			return;
+		}
+
+		// slightly modified code of zeach
+		var offset = ~~this.y;
+		function renderCellText(cell, cache, value) {
+			cache = new $cellText(cell.getNameSize(), "#FFFFFF", true, "#000000");
+			cache.setValue(value);
+			cache.setSize(cell.getNameSize());
+			scale = Math.ceil(10 * $scaleMultiplier) / 10;
+			cache.setScale(scale);
+			var canvas = cache.render(),
+				width = ~~(canvas.width / scale),
+				height = ~~(canvas.height / scale);
+			$gameCanvas.drawImage(canvas, ~~cell.x - ~~(width / 2), offset - ~~(height / 2), width, height);
+			offset += canvas.height / 1.3 / scale + 4;
+		}
+
+		// render name
+		if (this.name && this.nameCache)
+			renderCellText(this, this.nameCache, this.name);
+		// render ratio
+		if (-1 == $ownedCells.indexOf(this)) {
+			var biggestCellSize = $ownedCells.reduce(function(previous, current) {
+				return previous > current.size ? previous : current.size;
+			}, 0);
+			var text = ~~((this.size * this.size) / (biggestCellSize * biggestCellSize) * 100) + '%';
+
+			renderCellText(this, this.nameCache, text);
+		}
+		// render mass
+		renderCellText(this, this.sizeCache, ~~this.size);
+	};
+
+	//bypass obfuscation
 	var match = /(\w+)=-1!=(\w+)\.indexOf\(this\);/.exec(gamejs);
 	var isOwnedCell = match[1],
 		ownedCells = match[2];
-	var sizeCache = /(\w+)=this\.sizeCache/.exec(gamejs)[1];
+	var cellText = /this\.nameCache=new (\w+)\(this\.getNameSize/.exec(gamejs)[1];
+	var scaleMultiplier = /Math\.ceil\(10\*(\w+)\)\/10/.exec(gamejs)[1];
+	var gameCanvas = /(\w+)=\w+\.getContext\("2d"\)/.exec(gamejs)[1];
 
-	var haxx = " \
-	if (!" + isOwnedCell + ") { \
-		var biggest = 0; \
-		" + ownedCells + ".forEach(function(x) { \
-			if (x.size > biggest) { \
-				biggest = x.size; \
-			} \
-		}); \
-		" + isOwnedCell + " = 1; \
-		var size = ~~((this.size * this.size) / (biggest * biggest) * 100) + '%'; \
-	} else { \
-		var size = ~~(this.size * this.size / 100); \
-	}";
-	gamejs = gamejs.replace(shouldShowMass + '&&', haxx + shouldShowMass + '&&');
-	gamejs = gamejs.replace(sizeCache + '.setValue(~~(this.size*this.size/100))', sizeCache + '.setValue(size)');
-	gamejs = gamejs.replace(sizeCache + '.setSize(this.getNameSize()/2)', sizeCache + '.setSize(this.getNameSize() * 1.5)');
+	// convert haxx closure to string
+	haxx = haxx.toString()
+		.replace(/function \(\) {([^]+)}/, "$1") // get the function body
+		.replace(/\$ownedCells/g, ownedCells) // fix pseudo-variables
+		.replace(/\$cellText/g, cellText)
+		.replace(/\$scaleMultiplier/g, scaleMultiplier)
+		.replace(/\$gameCanvas/g, gameCanvas);
+
+	// inject haxx, here we are overriding cell text rendering logic in draw function
+	gamejs = gamejs
+		.replace(/\w+=-1!=\w+\.indexOf\(this\)[^]+?restore\(\)/,
+				 '{0} {1}.restore()'.format(haxx, gameCanvas));
+
 	return gamejs;
 }
 
@@ -157,6 +190,16 @@ function createUI() {
 }
 
 main();
+
+// this is godsent
+String.prototype.format = function() {
+    var formatted = this;
+    for (var i = 0; i < arguments.length; i++) {
+        var regexp = new RegExp('\\{' + i + '\\}', 'gi');
+        formatted = formatted.replace(regexp, arguments[i]);
+    }
+    return formatted;
+};
 
 (function(window) {
 	var WebSocket_original = window.WebSocket;
