@@ -41,7 +41,7 @@ function patchScript(gamejs) {
 
 		// slightly modified code of zeach
 		var offset = ~~this.y;
-		function renderCellText(cell, cache, value) {
+		function renderCellText(cell, value) {
 			cache = new $cellText(cell.getNameSize(), "#FFFFFF", true, "#000000");
 			cache.setValue(value);
 			cache.setSize(cell.getNameSize());
@@ -52,11 +52,13 @@ function patchScript(gamejs) {
 				height = ~~(canvas.height / scale);
 			$gameCanvas.drawImage(canvas, ~~cell.x - ~~(width / 2), offset - ~~(height / 2), width, height);
 			offset += canvas.height / 1.3 / scale + 4;
+
+			return cache;
 		}
 
 		// render name
 		if (this.name && this.nameCache)
-			renderCellText(this, this.nameCache, this.name);
+			this.nameCache = renderCellText(this, this.name);
 		// render ratio
 		if (-1 == $ownedCells.indexOf(this)) {
 			var biggestCellSize = $ownedCells.reduce(function(previous, current) {
@@ -64,10 +66,10 @@ function patchScript(gamejs) {
 			}, 0);
 			var text = ~~((this.size * this.size) / (biggestCellSize * biggestCellSize) * 100) + '%';
 
-			renderCellText(this, this.nameCache, text);
+			this.ratioCache = renderCellText(this, text);
 		}
 		// render mass
-		renderCellText(this, this.sizeCache, ~~this.size);
+		this.sizeCache = renderCellText(this, ~~this.size);
 	};
 
 	//bypass obfuscation
@@ -193,12 +195,12 @@ main();
 
 // this is godsent
 String.prototype.format = function() {
-    var formatted = this;
-    for (var i = 0; i < arguments.length; i++) {
-        var regexp = new RegExp('\\{' + i + '\\}', 'gi');
-        formatted = formatted.replace(regexp, arguments[i]);
-    }
-    return formatted;
+	var formatted = this;
+	for (var i = 0; i < arguments.length; i++) {
+		var regexp = new RegExp('\\{' + i + '\\}', 'gi');
+		formatted = formatted.replace(regexp, arguments[i]);
+	}
+	return formatted;
 };
 
 (function(window) {
