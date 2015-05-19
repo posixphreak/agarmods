@@ -70,6 +70,8 @@ function patchScript(gamejs) {
 		}
 		// render mass
 		this.sizeCache = renderCellText(this, ~~this.size);
+
+		$gameCanvas.restore();
 	};
 
 	//bypass obfuscation
@@ -89,9 +91,7 @@ function patchScript(gamejs) {
 		.replace(/\$gameCanvas/g, gameCanvas);
 
 	// inject haxx, here we are overriding cell text rendering logic in draw function
-	gamejs = gamejs
-		.replace(/\w+=-1!=\w+\.indexOf\(this\)[^]+?restore\(\)/,
-				 '{0} {1}.restore()'.format(haxx, gameCanvas));
+	gamejs = gamejs.replace(/\w+=-1!=\w+\.indexOf\(this\)[^]+?restore\(\)/, haxx);
 
 	return gamejs;
 }
@@ -192,16 +192,6 @@ function createUI() {
 }
 
 main();
-
-// this is godsent
-String.prototype.format = function() {
-	var formatted = this;
-	for (var i = 0; i < arguments.length; i++) {
-		var regexp = new RegExp('\\{' + i + '\\}', 'gi');
-		formatted = formatted.replace(regexp, arguments[i]);
-	}
-	return formatted;
-};
 
 (function(window) {
 	var WebSocket_original = window.WebSocket;
