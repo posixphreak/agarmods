@@ -75,12 +75,10 @@ function patchScript(gamejs) {
 	};
 
 	//bypass obfuscation
-	var match = /(\w+)=-1!=(\w+)\.indexOf\(this\);/.exec(gamejs);
-	var isOwnedCell = match[1],
-		ownedCells = match[2];
-	var cellText = /this\.nameCache=new (\w+)\(this\.getNameSize/.exec(gamejs)[1];
-	var scaleMultiplier = /Math\.ceil\(10\*(\w+)\)\/10/.exec(gamejs)[1];
-	var gameCanvas = /(\w+)=\w+\.getContext\("2d"\)/.exec(gamejs)[1];
+	var ownedCells = /\w+?=-1!=(\w+?)\.indexOf\(this\);/.exec(gamejs)[1];
+	var cellText = /this\.nameCache=new (.+?)\(this\.getNameSize/.exec(gamejs)[1];
+	var scaleMultiplier = /Math\.ceil\(10\*(\w+?)\)\/10/.exec(gamejs)[1];
+	var gameCanvas = /(\w+?)=\w+?\.getContext\("2d"\)/.exec(gamejs)[1];
 
 	// convert haxx closure to string
 	haxx = haxx.toString()
@@ -91,7 +89,7 @@ function patchScript(gamejs) {
 		.replace(/\$gameCanvas/g, gameCanvas);
 
 	// inject haxx, here we are overriding cell text rendering logic in draw function
-	gamejs = gamejs.replace(/\w+=-1!=\w+\.indexOf\(this\)[^]+?restore\(\)/, haxx);
+	gamejs = gamejs.replace(/\w+?=-1!=\w+?\.indexOf\(this\)[^]+?restore\(\)/, haxx);
 
 	return gamejs;
 }
