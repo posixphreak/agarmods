@@ -64,12 +64,12 @@ function patchScript(gamejs) {
 			var biggestCellSize = $ownedCells.reduce(function(previous, current) {
 				return previous > current.size ? previous : current.size;
 			}, 0);
-			var text = ~~((this.size * this.size) / (biggestCellSize * biggestCellSize) * 100) + '%';
+			var text = ~~(Math.pow(this.size / biggestCellSize, 2) * 100) + '%';
 
 			this.ratioCache = renderCellText(this, text);
 		}
 		// render mass
-		this.sizeCache = renderCellText(this, ~~this.size);
+		this.sizeCache = renderCellText(this, ~~(this.size * this.size / 100));
 
 		$gameCanvas.restore();
 	};
